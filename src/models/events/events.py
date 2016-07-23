@@ -9,12 +9,13 @@ from src.models.members.members import Member
 
 # todo: make events repeatable with it's own members list
 class Event(object):
-    def __init__(self, title, day_of_event, tag, assigned_members,  monthly_notification=False, _id=None):
+    def __init__(self, title, day_of_event, tag, assigned_members,  monthly_notification=False, active=True, _id=None):
         self.title = title
         self.day_of_event = day_of_event
         self.tag = tag
         self.assigned_members = assigned_members
         self.monthly_notification = monthly_notification
+        self.active = active
         self._id = uuid.uuid4().hex if _id is None else _id
 
     # todo: add a tag specific note
@@ -35,7 +36,6 @@ class Event(object):
             }
         )
 
-
     def save_to_mongo(self):
         Database.update(EventConstants.COLLECTION, {"_id": self._id}, self.json())
 
@@ -53,7 +53,7 @@ class Event(object):
         time_for_notification = date(int(datetime.date.today().strftime("%Y")),
                                      int(datetime.date.today().strftime("%m")),
                                      int(datetime.date.today().strftime("%d"))) + timedelta(days=days_before_event)
-        print (time_for_notification)
+        print(time_for_notification)
         return [cls(**elem) for elem in Database.find(EventConstants.COLLECTION,
                                                       {"day_of_event":  {"$gt": str(time_for_notification)}})]
 
@@ -67,4 +67,6 @@ class Event(object):
             member = Member.find_by_id(member)
             self.event_email(member.email, member.name)
 
-
+    @classmethod
+    def all(cls):
+        return [cls(**elem) for elem in Database.find(EventConstants.COLLECTION, {"active": True})]
