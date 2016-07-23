@@ -48,7 +48,6 @@ class Event(object):
             "_id": self._id
         }
 
-    # todo: create algorithm for finding events for sending notifications
     @classmethod
     def find_notifications(cls, days_before_event):
         time_for_notification = date(int(datetime.date.today().strftime("%Y")),
@@ -68,6 +67,4 @@ class Event(object):
             member = Member.find_by_id(member)
             self.event_email(member.email, member.name)
 
-
-# todo: create a way for admins to create calendar(tag) and specific message for them
 
