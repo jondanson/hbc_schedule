@@ -62,6 +62,11 @@ class Event(object):
         return [cls(**elem) for elem in Database.find(EventConstants.COLLECTION,
                                                       {"title": title})]
 
+    @classmethod
+    def find_by_id(cls, _id):
+        return [cls(**elem) for elem in Database.find(EventConstants.COLLECTION,
+                                                      {"_id": _id})]
+
     def inital_monthly_email(self):
         for member in self.assigned_members:
             member = Member.find_by_id(member)
