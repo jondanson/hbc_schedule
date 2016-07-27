@@ -16,8 +16,13 @@ def login_user():
         try:
             if Admin.is_login_valid(email, password):
                 session['email'] = email
-                return redirect(url_for('.admin_home.jinja2'))#todo: fix home page to show scheduling info and options if logged.
+                return redirect(url_for('home'))#todo: fix home page to show scheduling info and options if logged.
         except AdminErrors.AdminNotExistError as e:
             return e.message
 
     return render_template('admin/login.jinja2')
+
+@admin_blueprint.route('/logout', methods=['GET'])
+def logout_user():
+    session['email'] = None
+    return redirect(url_for('home'))
