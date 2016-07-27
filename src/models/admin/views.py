@@ -16,7 +16,7 @@ def login_user():
         try:
             if Admin.is_login_valid(email, password):
                 session['email'] = email
-                return redirect(url_for('.user_alerts'))
+                return redirect(url_for('.admin_home.jinja2'))#todo: fix home page to show scheduling info and options if logged.
         except AdminErrors.AdminNotExistError as e:
             return e.message
 

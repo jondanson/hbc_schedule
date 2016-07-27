@@ -15,22 +15,19 @@
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#navbar" aria-expanded="false">
+                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/" title="Home">Harvest Schedules</a>
+            <a class="navbar-brand" href="/" title="Home">Harvest Schedule</a>
         </div>
 
-        <div id="navbar" class="navbar-collapse collapse">
-            {% if session['email'] %}
+        <<div id="navbar" class="navbar-collapse collapse">
+
             <ul class="nav navbar-nav">
-                <li><a href="{{ url_for('events.index') }}"><span class="glyphicon glyphicon-calendar"></span> Events</a></li>
+                <li><span class="glyphicon glyphicon-calendar"></span> Events</li>
             </ul>
-            {% endif %}
+
             {% if session['email'] %}
                 <ul class="nav navbar-nav navbar-right">
                 <!--todo: Create a member Management view and module -->

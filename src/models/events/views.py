@@ -6,14 +6,14 @@ import src.models.events.decorators as event_decorators
 event_blueprint = Blueprint('events', __name__)
 
 
-@event_blueprint.route('/')
+@event_blueprint.route('/index')
 def index():
     events = Event.all()
     return render_template('events/events_index.jinja2', events=events)
 
 
 @event_blueprint.route('/new', methods=['GET', 'Post'])
-@event_decorators.requires_admin_permissions
+#@event_decorators.requires_admin_permissions
 def create_event():
     if request.method == 'POST':
         title = request.form['title']
@@ -28,7 +28,7 @@ def create_event():
     return render_template('events/create_event.jinja2')
 
 @event_blueprint.route('/edit/<string:_id>', methods=['GET', 'POST'])
-@event_decorators.requires_admin_permissions
+#@event_decorators.requires_admin_permissions
 def edit_event(_id):
     event = Event.find_by_id(_id)
     if request.method == 'POST':
@@ -47,4 +47,4 @@ def edit_event(_id):
         event.save_to_mongo()
 
         return redirect(url_for('.index'))
-    return render_template('Events/edit_event.jinja2', event=event)
+    return render_template('events/edit_event.jinja2', event=event)
