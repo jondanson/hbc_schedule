@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="noindex" />
+    <meta name="robots" content="nofollow" />
     <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Harvest Schedule</title>
@@ -21,22 +23,23 @@
             </button>
             <a class="navbar-brand" href="/" title="Home">Harvest Schedule</a>
         </div>
-
-        <<div id="navbar" class="navbar-collapse collapse">
-
-            <ul class="nav navbar-nav">
-                <li><span class="glyphicon glyphicon-calendar"></span> Events</li>
-            </ul>
-
+        <div id="navbar" class="navbar-collapse collapse">
+            {% if session['email'] %}
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Events</a></li>
+                </ul>
+            {% endif %}
             {% if session['email'] %}
                 <ul class="nav navbar-nav navbar-right">
-                <!--todo: Create a member Management view and module -->
-                <li><a href="{{ url_for('admin.logout_user') }}"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
-            </ul>
+                    <!--todo: Create a member Management view and module -->
+                    <li><a href="{{ url_for('admin.logout_user') }}"><span class="glyphicon glyphicon-log-out"></span>
+                        Log out</a></li>
+                </ul>
             {% else %}
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ url_for('admin.login_user') }}"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
-            </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ url_for('admin.login_user') }}"><span class="glyphicon glyphicon-log-in"></span> Log
+                        in</a></li>
+                </ul>
             {% endif %}
         </div>
 

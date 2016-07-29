@@ -1,18 +1,18 @@
-import json
+#import json
 from flask import Blueprint, render_template, request, redirect, url_for
 from src.models.events.events import Event
-import src.models.events.decorators as event_decorators
+#import src.models.events.decorators as event_decorators
 
 event_blueprint = Blueprint('events', __name__)
 
 
-@event_blueprint.route('/index')
-def index():
+@event_blueprint.route('/index_of_events')
+def index_of_events():
     events = Event.all()
     return render_template('events/events_index.jinja2', events=events)
 
 
-@event_blueprint.route('/new', methods=['GET', 'Post'])
+@event_blueprint.route('/new_event', methods=['GET', 'Post'])
 #@event_decorators.requires_admin_permissions
 def create_event():
     if request.method == 'POST':

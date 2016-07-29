@@ -1,0 +1,25 @@
+{% extends "base.jinja2" %}
+{% block content %}
+    <div class="jumbotron">
+    {% if session['email'] %}
+        <h1>Welcome</h1>
+        <p>This site is still in development.
+            There may still be issues with some functionality.
+            If anything goes wrong, please send an email with what you tried to do to <strong>jondanson@gmail.com.</strong><br>
+            Thank you
+            </p>
+        <p>Here are a few things to get you started.</p>
+        <p>Add some members. Create an event and assign members to those events.</p>
+        <p><a class="btn btn-primary btn-lg" href="{{ url_for('members.register_member') }}" role="button">Add Members</a></p>
+    {% else %}
+        <h1>Welcome</h1>
+        <p>This site is dedicated to Harvest Baptist Church.<br>
+            It is for the scheduling of its members for automated reminders.<br>
+            </p>
+        <p>Please sign in to get started!</p>
+
+        <p><a class="btn btn-primary btn-lg" href="{{ url_for('admin.login_user') }}" role="button">Sign in</a></p>
+    {% endif %}
+    </div>
+
+{% endblock %}   

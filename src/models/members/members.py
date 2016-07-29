@@ -14,18 +14,17 @@ class Member(object):
         self._id = uuid.uuid4().hex if _id is None else _id
 
     @staticmethod
-    def register_member(name, email):
+    def register_member(name, email, cell_phone):
         """
-        Registers a volunteer. And admin will have to create
+        Registers a Member. The Admin will have to create
         himself as a general user for scheduling purposes.
         :param name: user's name
         :return: True if registered successfully or False if otherwise (exceptions can be raised)
         """
-        if email is not None:
-            if not Utils.email_is_valid(email):
-                raise MemberErrors.InvalidEmailError("Not a valid email format.")
+        if not Utils.email_is_valid(email):
+            raise MemberErrors.InvalidEmailError("Not a valid email format.")
 
-        Member(name).save_to_mongo()
+        Member(name, email, cell_phone).save_to_mongo()
 
         return True
 

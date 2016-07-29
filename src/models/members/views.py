@@ -16,8 +16,8 @@ def register_member():
 
 
         try:
-            if User.register_user(name, email, cell_phone):
-                return redirect(url_for('.members_list'))
+            if Member.register_member(name, email, cell_phone):
+                return redirect(url_for('home'))
         except MemberErrors.MemberError as e:
             return e.message
 

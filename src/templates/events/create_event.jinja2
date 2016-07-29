@@ -1,0 +1,21 @@
+{% extends "base.jinja2" %}
+{% block content %}
+    <div class="page-header">
+        <h1>Member Registration</h1>
+            <small>Currently members cannot log in.</small>
+    </div>
+    <div class="form-size">
+        <form method="post">
+            <div class="form-group">
+                <label for="title">Event name</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Event Name (Sunday Morning Service)">
+            </div>
+            <div class="form-group">
+                <label for="day_of_event">Date of Event</label>
+                <input type="text" id="datetimepicker2" data-format="yy-mm-dd" class="form-control" name="day_of_event" placeholder="1/1/2016">
+                <span class="add-on"
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
