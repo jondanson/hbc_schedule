@@ -1,4 +1,5 @@
 import uuid
+import requests
 from src.common.database import Database
 from src.common.utils import Utils
 import src.models.members.constants as MemberConstants
@@ -6,15 +7,16 @@ import src.models.members.errors as MemberErrors
 
 
 class Member(object):
-    def __init__(self, name, email="na", cell_phone="na", active="True", _id=None):
-        self.name = name
+    def __init__(self, first_name, last_name, email="na", cell_phone="na", active="True", _id=None):
+        self.first_name = first_name
+        self.last_name = last_name
         self.email = email
         self.cell_phone = cell_phone
         self.active = active
         self._id = uuid.uuid4().hex if _id is None else _id
 
     @staticmethod
-    def register_member(name, email, cell_phone):
+    def register_member(first_name, last_name, email, cell_phone):
         """
         Registers a Member. The Admin will have to create
         himself as a general user for scheduling purposes.
@@ -24,7 +26,7 @@ class Member(object):
         if not Utils.email_is_valid(email):
             raise MemberErrors.InvalidEmailError("Not a valid email format.")
 
-        Member(name, email, cell_phone).save_to_mongo()
+        Member(first_name, last_name, email, cell_phone).save_to_mongo()
 
         return True
 
@@ -34,7 +36,8 @@ class Member(object):
     def json(self):
         return {
             "_id": self._id,
-            "name": self.name,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
             "email": self.email,
             "cell_phone": self.cell_phone,
             "active": self.active
@@ -60,6 +63,7 @@ class Member(object):
     def find_by_email(cls, email):
         return cls(**Database.find_one(MemberConstants.COLLECTION, {'email': email}))
 
+    # todo: Need to think of method to search for either first or last name
     @classmethod
     def find_by_name(cls, name):
         return cls(**Database.find_one(MemberConstants.COLLECTION, {'name': name}))
@@ -69,8 +73,13 @@ class Member(object):
         return cls(**Database.find_one(MemberConstants.COLLECTION, {'_id': _id}))
 
     @classmethod
-    def all_members(cls):
+    def all(cls):
         return [cls(**elem) for elem in Database.find(MemberConstants.COLLECTION, {})]
+
+    @classmethod
+    def all_sorted(cls):
+        return [cls(**elem) for elem in Database.sorted_2field_find(MemberConstants.COLLECTION, {},
+                                                                    "last_name", "first_name")]
 
     def delete(self):
         Database.remove(MemberConstants.COLLECTION, {"_id": self._id})

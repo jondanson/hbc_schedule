@@ -19,6 +19,15 @@ class Database(object):
         return Database.DATABASE[collection].find(query)
 
     @staticmethod
+    def sorted_1field_find(collection, query, first_field):
+        return Database.DATABASE[collection].find(query).sort([(first_field, 1)])
+
+    @staticmethod
+    def sorted_2field_find(collection, query, first_field, second_field):
+        return Database.DATABASE[collection].find(query).sort([(first_field, 1), (second_field, 1)])
+
+
+    @staticmethod
     def find_one(collection, query):
         return Database.DATABASE[collection].find_one(query)
 

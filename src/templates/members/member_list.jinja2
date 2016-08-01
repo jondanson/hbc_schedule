@@ -1,0 +1,26 @@
+{% extends "base.jinja2" %}
+{% block content %}
+    <div class="page-header">
+        <h1>Member List</h1>
+            <small>A list of all currently registered members</small>
+    </div>
+        <div class="list-group">
+        {% for member in members %}
+            <!--todo: Create member edie page-->
+            <!--<a href="#" class="list-group-item">-->
+                <h4 class="list-group-item-title"><u>{{ member.first_name }} {{ member.last_name }}</u></h4>
+                <p class="list-group-item-text">Cell Phone:
+                    <strong>{{ member.cell_phone }}</strong></p>
+                <p class="list-group-item-text">Email: <strong>{{ member.email }}</strong></p>
+                <br>
+            <!--</a>-->
+        {% endfor %}
+    </div>
+        <a class="btn btn-success" href="{{ url_for('members.register_member') }}">
+            <span class="glyphicon glypicon-plus"></span>Register Member
+        </a>
+
+
+{% endblock %}
+
+<!-- member_id=member._id-->
