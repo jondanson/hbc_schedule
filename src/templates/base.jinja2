@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="robots" content="noindex" />
-    <meta name="robots" content="nofollow" />
-    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+
+
     <title>Harvest Schedule</title>
 
     {% include 'html_dependencies.jinja2' %}
@@ -27,6 +27,9 @@
             {% if session['email'] %}
                 <ul class="nav navbar-nav">
                     <li><a href="#">Events</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('members.index') }}">Members</a></li>
                 </ul>
             {% endif %}
             {% if session['email'] %}
@@ -51,5 +54,8 @@
     {% endblock %}
 </div>
 
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>
