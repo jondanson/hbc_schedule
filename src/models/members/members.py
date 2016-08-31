@@ -1,5 +1,6 @@
 import uuid
 import requests
+import src.config as DEBUG
 from src.common.database import Database
 from src.common.utils import Utils
 import src.models.members.constants as MemberConstants
@@ -20,9 +21,18 @@ class Member(object):
         """
         Registers a Member. The Admin will have to create
         himself as a general user for scheduling purposes.
-        :param name: user's name
+        :param first_name:
+        :param last_name:
+        :param email:
+        :param cell_phone:
+        :return:
         :return: True if registered successfully or False if otherwise (exceptions can be raised)
         """
+        member_data = Database.find_one(MemberConstants.COLLECTION, {"email": email})
+
+        if DEBUG is False:
+            if member_data is not None:
+                raise MemberErrors.MemberEmailAlreadyUsed("THe email address you used is already in use.")
         if not Utils.email_is_valid(email):
             raise MemberErrors.InvalidEmailError("Not a valid email format.")
 

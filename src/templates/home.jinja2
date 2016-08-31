@@ -10,8 +10,9 @@
             </p>
         <p>Here are a few things to get you started.</p>
         <p>Add some members. Create an event and assign members to those events.</p>
-        <p><a class="btn btn-primary btn-lg" href="{{ url_for('members.register_member') }}" role="button">Add Members</a></p>
-        <p><a class="btn btn-primary btn-lg" href="{{ url_for('members.index') }}" role="button">View Members</a></p>
+        <a class="btn btn-primary btn-lg" href="{{ url_for('members.register_member') }}" role="button">Add Members</a>
+        <a class="btn btn-primary btn-lg" href="{{ url_for('members.index') }}" role="button">View Members</a>
+        <a class="btn btn-primary btn-lg" href="{{ url_for('events.create_event') }}" role="button">Create Event</a>
     {% else %}
         <h1>Welcome</h1>
         <p>This site is dedicated to Harvest Baptist Church.<br>

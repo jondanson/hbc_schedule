@@ -19,8 +19,8 @@ def home():
 
 from src.models.members.views import member_blueprint
 from src.models.admin.views import admin_blueprint
-#from src.models.stores.views import store_blueprint
+from src.models.events.views import event_blueprint
 app.register_blueprint(member_blueprint, url_prefix="/members")
 app.register_blueprint(admin_blueprint, url_prefix="/admins")
-#app.register_blueprint(store_blueprint, url_prefix="/stores")
+app.register_blueprint(event_blueprint, url_prefix="/events")
 
