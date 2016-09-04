@@ -33,6 +33,7 @@
                 </ul>
             {% endif %}
             {% if session['email'] %}
+
                 <ul class="nav navbar-nav navbar-right">
                     <!--todo: Create a member Management view and module -->
                     <li><a href="{{ url_for('admin.logout_user') }}"><span class="glyphicon glyphicon-log-out"></span>
@@ -58,5 +59,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 </body>
 </html>

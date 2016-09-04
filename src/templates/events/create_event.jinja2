@@ -24,9 +24,9 @@
             <div class="form-group">
                 <label class="col-xs control-label" for="assigned_members">Members</label>
                 <div class="'col-xs-5">
-                <select id="assigned_members" multiple class="form-control" name="assigned_members">
+                <select id="assigned_members" class="form-control mobileSelect"  multiple name="assigned_members">
                     {% for member in members %}
-                        <option>{{ member.first_name }} {{ member.last_name }} {{ member.email }} {{ "&nbsp;" * 150  }}  {{ member._id }}</option>
+                        <option value="{{ member._id }}">{{ member.first_name }} {{ member.last_name }} {{ member.email }}</option>
                     {% endfor %}
                 </select>
                 </div>
