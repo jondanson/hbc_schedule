@@ -1,0 +1,41 @@
+{% extends "base.jinja2" %}
+{% block content %}
+    <div class="page-header">
+        <h1>Member List</h1>
+        <small>A list of all currently registered members</small>
+    </div>
+        <div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th> </th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Cell Phone</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for member in members %}
+                <tr>
+                    <th><a href="{{ url_for("members.edit_member", member_id=member._id) }}">
+                        <span class="glyphicon glyphicon-pencil"></span></a></th>
+                    <th>{{ member.last_name }}</th>
+                    <th>{{ member.first_name }} </th>
+                    <th>{{ member.cell_phone }}</th>
+                    <th>{{ member.email }}</th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    <div>
+        <a class="btn btn-success" href="{{ url_for('members.register_member') }}">
+            <span class="glyphicon glypicon-plus"></span>Register Member
+        </a>
+    </div>
+
+
+{% endblock %}
+
+<!-- member_id=member._id-->

@@ -11,5 +11,6 @@ class InvalidEmailError(MemberError):
     pass
 
 
-
+class MemberEmailAlreadyUsed(MemberError):
+    pass
 

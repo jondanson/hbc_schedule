@@ -48,7 +48,8 @@ class Admin(object):
         return {
             "_id": self._id,
             "email": self.email,
-            "password": self.password
+            "password": self.password,
+            "active": self.active
         }
 
     def delete(self):

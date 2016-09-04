@@ -1,0 +1,45 @@
+{% extends "base.jinja2" %}
+{% block content %}
+    <div class="page-header">
+        <h1>Event List</h1>
+        <small>A list of all current events. Past events will not show.</small>
+    </div>
+        <div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th> </th>
+                    <th>Service</th>
+                    <th>Ministry</th>
+                    <th>Day Of Event</th>
+                    <th>Assigned Members</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for event in events %}
+                <tr>
+                    <th><a href="{{ url_for("events.edit_event", event_id=event._id) }}">
+                        <span class="glyphicon glyphicon-pencil"></span></a></th>
+                    <th>{{ event.title }}</th>
+                    <th>{{ event.ministry }}</th>
+                    <th>{{ event.day_of_event }}</th>
+                    <th>
+                        {% for member in event.assigned_members %}
+                            {{ member }},
+                        {% endfor %}
+                    </th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <p>If editing an event, you will need to select all members again. This is temporary.</p>
+        </div>
+    <div>
+        <a class="btn btn-success" href="{{ url_for('members.register_member') }}">
+            <span class="glyphicon glypicon-plus"></span>Register Member</a>
+        <a class="btn btn-success" href="{{ url_for('events.create_event') }}">
+            <span class="glyphicon glypicon-plus"></span>Create Event</a>
+    </div>
+
+
+{% endblock %}
