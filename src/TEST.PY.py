@@ -2,6 +2,7 @@ import time
 import datetime
 from datetime import date, timedelta
 from src.models.members.members import Member
+from src.models.admin.admin import Admin
 from src.models.events.events import Event
 from src.common.database import Database
 
@@ -22,6 +23,7 @@ Database.initialize()
 
 events = Event.all()
 event1 = []
+
 for event in events:
     this = Event.find_by_id(event._id)
 
@@ -29,3 +31,7 @@ for event in events:
         print(it.title)
 
 
+# user = "jondanson@gmail.com"
+# pword = "test"
+#
+# Admin.register_admin(user, pword)
