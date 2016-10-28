@@ -42,7 +42,7 @@ def create_event():
 
         Event(title, day_of_event, ministry, member_ids).save_to_mongo()
 
-        return redirect(url_for('.create_event'))
+        return redirect(url_for('.index_of_events'))
 
     return render_template('events/create_event.jinja2', members=members)
 
