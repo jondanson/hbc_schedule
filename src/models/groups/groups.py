@@ -3,7 +3,7 @@ import requests
 import src.config as DEBUG
 from src.common.database import Database
 from src.common.utils import Utils
-import src.models.groups.constants as GroupConstants
+import src.models.groups.gconstants as GroupConstants
 import src.models.groups.errors as GroupErrors
 
 

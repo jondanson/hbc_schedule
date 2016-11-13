@@ -3,7 +3,7 @@ from datetime import date, timedelta
 import uuid
 import requests
 from src.common.database import Database
-import src.models.events.constants as EventConstants
+import src.models.events.econstants as EventConstants
 from src.models.members.members import Member
 
 # todo: still need to make a static method for weekly notification.

@@ -55,6 +55,7 @@ class Member(object):
 
     # todo: Figure out running each member and creating a list of services and dates to send the entire schedule for a month
     # todo: Write out message for the full schedule.
+    # todo: Move to events module
     def monthly_email(self, member_email, member_name):
         return requests.post(
             MemberConstants.URL,

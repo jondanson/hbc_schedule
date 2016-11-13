@@ -2,7 +2,7 @@ import uuid
 from src.common.database import Database
 from src.common.utils import Utils
 import src.models.admin.errors as AdminErrors
-import src.models.admin.constants as AdminConstants
+import src.models.admin.aconstants as AdminConstants
 
 
 class Admin(object):
