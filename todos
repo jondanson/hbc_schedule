@@ -6,4 +6,6 @@ Ministries (Easily editable)
 
 The ability to export to a schedule. PDF.
 
-#TODO: Create emailer.py file to
+
+#TODO: Implement calendar from https://fullcalendar.io/download/ to display in calendar format
+#TODO: Turn each ministry into its own pdf calendar https://ssscripting.wordpress.com/2009/08/16/get-your-job-done-faster-with-pypdf/
